@@ -1,9 +1,15 @@
-const employees= [
+const employees = [
     {
       "id": 1,
       "name": "John Smith",
       "email": "john.smith@company.com",
       "password": "123",
+      "taskCount": {
+        "active": 3,
+        "newTask": 1,
+        "completed": 1,
+        "failed": 1
+      },
       "tasks": [
         {
           "id": 101,
@@ -72,6 +78,12 @@ const employees= [
       "name": "Sarah Johnson",
       "email": "sarah.johnson@company.com",
       "password": "123",
+      "taskCount": {
+        "active": 5,
+        "newTask": 2,
+        "completed": 1,
+        "failed": 1
+      },
       "tasks": [
         {
           "id": 201,
@@ -164,6 +176,12 @@ const employees= [
       "name": "Michael Davis",
       "email": "michael.davis@company.com",
       "password": "123",
+      "taskCount": {
+        "active": 4,
+        "newTask": 1,
+        "completed": 1,
+        "failed": 1
+      },
       "tasks": [
         {
           "id": 301,
@@ -244,6 +262,12 @@ const employees= [
       "name": "Emily Wilson",
       "email": "emily.wilson@company.com",
       "password": "123",
+      "taskCount": {
+        "active": 5,
+        "newTask": 2,
+        "completed": 1,
+        "failed": 1
+      },
       "tasks": [
         {
           "id": 401,
@@ -348,6 +372,12 @@ const employees= [
       "name": "David Brown",
       "email": "david.brown@company.com",
       "password": "123",
+      "taskCount": {
+        "active": 6,
+        "newTask": 2,
+        "completed": 1,
+        "failed": 1
+      },
       "tasks": [
         {
           "id": 501,
@@ -458,11 +488,10 @@ const employees= [
           "category": "Automation"
         }
       ]
-    },
-    
+    }
   ];
 
-
+  
  const admin=[
     {
         "id": 11,
