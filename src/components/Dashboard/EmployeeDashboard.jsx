@@ -3,11 +3,12 @@ import Header from '../HelperComponents/Header'
 import TaskNumber from '../HelperComponents/TaskNumber'
 import TaskList from '../TaskList/TaskList'
 
-const EmployeeDashboard = () => {
+const EmployeeDashboard = ({data,handleLogout}) => {
+  
   return (
     <div>
         <div className='p-10 bg-[#1C1C1C] h-screen'>
-            <Header/>
+            <Header handleLogout={handleLogout} name={data.name} />
             <TaskNumber />
             <TaskList />
         </div>

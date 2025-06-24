@@ -24,14 +24,14 @@ const Login = ({handleLogin}) => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className='border-2 border-emerald-600 rounded-full outline-none bg-transparent placeholder:text-gray-400 py-4 px-5 text-xl'
+                    className='text-gray-400 border-2 border-emerald-600 rounded-full outline-none bg-transparent placeholder:text-gray-400 py-4 px-5 text-xl'
                     type='email' placeholder='Enter your email' 
                 />
                 <input 
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                    className='border-2 border-emerald-600  rounded-full mt-3 outline-none bg-transparent placeholder:text-gray-400 py-4 px-5 text-xl'
+                    className='text-gray-400 border-2 border-emerald-600  rounded-full mt-3 outline-none bg-transparent placeholder:text-gray-400 py-4 px-5 text-xl'
                     type='password' placeholder='Enter password' 
                 />
                 <button 

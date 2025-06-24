@@ -1,6 +1,7 @@
 const employees= [
     {
       "id": 1,
+      "name": "John Smith",
       "email": "john.smith@company.com",
       "password": "123",
       "tasks": [
@@ -68,6 +69,7 @@ const employees= [
     },
     {
       "id": 2,
+      "name": "Sarah Johnson",
       "email": "sarah.johnson@company.com",
       "password": "123",
       "tasks": [
@@ -159,6 +161,7 @@ const employees= [
     },
     {
       "id": 3,
+      "name": "Michael Davis",
       "email": "michael.davis@company.com",
       "password": "123",
       "tasks": [
@@ -238,6 +241,7 @@ const employees= [
     },
     {
       "id": 4,
+      "name": "Emily Wilson",
       "email": "emily.wilson@company.com",
       "password": "123",
       "tasks": [
@@ -341,6 +345,7 @@ const employees= [
     },
     {
       "id": 5,
+      "name": "David Brown",
       "email": "david.brown@company.com",
       "password": "123",
       "tasks": [

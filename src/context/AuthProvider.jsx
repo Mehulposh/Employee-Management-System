@@ -1,5 +1,7 @@
-import React, { createContext } from 'react'
+import React, {useState,useEffect, createContext } from 'react'
 import { getLocalStorage } from '../utils/localStoreage';
+
+
 export const AuthContext = createContext();
 
 
@@ -12,15 +14,15 @@ const AuthProvider = ({children}) => {
       setUserData({employeesData,adminData});
     
       
-    }, [])
+    }, []);
     
  return (
     <div>
-        <AuthContext.Provider value={}>
+        <AuthContext.Provider value={userData}>
             {children}
         </AuthContext.Provider>
     </div>
   )
 }
 
-export default AuthProvider
+export default AuthProvider;
