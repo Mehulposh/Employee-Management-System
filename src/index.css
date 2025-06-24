@@ -5,6 +5,6 @@ body{
   background-color: #111;
 }
 
-#tasklist::-webkit-scrollbar{
+#tasklist::-webkit-scrollbar , #alltasks::-webkit-scrollbar{
   display: none;
 }
