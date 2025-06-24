@@ -6,7 +6,7 @@ const Login = ({handleLogin}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(password);
+        
         handleLogin(email,password);
         setEmail('');
         setPassword('');
