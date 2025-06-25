@@ -20,7 +20,7 @@ const CreateTask = () => {
         
         const id = alltasks.length > 0 ? Math.max(...alltasks.map(task => task.id)) + 1 : 1;
 
-        const Task= {id,title,description,date,category,active:false,newTask:true,completed:false,failed:false};
+        const Task= {id,title,description,date,category,active:false,newTask:true,completed:false,failed:false,priority:'low'};
 
        
 
