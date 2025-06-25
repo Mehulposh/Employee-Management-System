@@ -31,11 +31,11 @@ function App() {
     };  
   }, [employeesData,adminData])
   
-  // useEffect(() => {
-  //   setLocalStorage();
+  useEffect(() => {
+    setLocalStorage();
   
     
-  // }, [])
+  }, [])
   
   
   const handleLogin = (email,password) => {
