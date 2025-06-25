@@ -11,36 +11,41 @@ function App() {
 
   const [user, setUser] = useState(null);
   const [userData, setUserData] = useState(null);
-  const authData = useContext(AuthContext);
+  const {userData: employeesData, admin: adminData} = useContext(AuthContext);
 
   useEffect(() => {
     const userlogedin = JSON.parse(localStorage.getItem('UserDetails'));
-    if(userlogedin && authData){
+  //    console.log('Admin Data:', adminData);
+  // console.log('Employees Data:', employeesData);
+
+    if(userlogedin && (adminData || employeesData)){
       setUser(userlogedin.role);
 
       const data = userlogedin.role === 'admin' 
-                   ? authData.adminData.find(item => item.id === userlogedin.id)
-                   : authData.employeesData.find(item => item.id === userlogedin.id)
+                   ? adminData.find(item => item.id === userlogedin.id)
+                   : employeesData.find(item => item.id === userlogedin.id)
       
       if(data) {
         setUserData(data);
       }
-    };
-
-    
+    };  
+  }, [employeesData,adminData])
+  
+  // useEffect(() => {
+  //   setLocalStorage();
   
     
-  }, [authData])
+  // }, [])
   
   
   const handleLogin = (email,password) => {
-    if(authData && authData.adminData.find((i) => email === i.email && password === i.password)){
-        const data = authData.adminData.find((i) => email === i.email && password === i.password);
+    if(adminData?.find((i) => email === i.email && password === i.password)){
+        const data = adminData.find((i) => email === i.email && password === i.password);
         setUser('admin');
         localStorage.setItem('UserDetails',JSON.stringify({role: 'admin',id: data.id}));
       
-    }else if(authData){
-      const data = authData.employeesData.find((i) => email === i.email && password === i.password)
+    }else if(employeesData){
+      const data = employeesData.find((i) => email === i.email && password === i.password)
       if(data){
         setUser('employee');
         setUserData(data);
@@ -59,9 +64,7 @@ function App() {
     setUserData(null);
     localStorage.removeItem('UserDetails');
   }
-  useEffect(() => {
-    setLocalStorage();
-  },[])
+  
   
   return (
     <>
