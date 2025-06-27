@@ -2,12 +2,14 @@ import React,{useState,useContext} from 'react'
 import { AuthContext } from '../../context/AuthProvider'
 
 
+
 const CreateTask = () => {
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
     const [assignTo, setAssignTo] = useState('');
     const [category, setCategory] = useState('');
     const [description, setescription] = useState('');
+    const [priority, setPriority] = useState('');
 
    const {setUserData} = useContext(AuthContext);
     
@@ -20,9 +22,9 @@ const CreateTask = () => {
         
         const id = alltasks.length > 0 ? Math.max(...alltasks.map(task => task.id)) + 1 : 1;
 
-        const Task= {id,title,description,date,category,active:false,newTask:true,completed:false,failed:false,priority:'low'};
+        const Task= {id,title,description,date,category,active:false,newTask:true,completed:false,failed:false,priority};
 
-       
+              
 
         data.forEach(item => {
             if(assignTo === item.name){
@@ -40,6 +42,7 @@ const CreateTask = () => {
         setDate('')
         setTitle('')
         setescription('');
+        setPriority('');
     }
    
   return (
@@ -86,6 +89,14 @@ const CreateTask = () => {
                             onChange={(e) => setCategory(e.target.value)}
                         />
                     </div>
+                     <div  className='w-full text-left mt-2'>
+                        <h3 className='mb-2'>Priority</h3>
+                        <select className='w-[80%] p-2 rounded bg-gray-500 '>
+                            <option onChange={(e) => setPriority(e.target.value)} value='' selected>Select Priority</option>
+                            <option onChange={(e) => setPriority(e.target.value)} value='High'>High</option>
+                            <option onChange={(e) => setPriority(e.target.value)} value='Low'>Low</option>
+                        </select>
+                     </div>
                 </div>
                 <div className='w-1/2 text-left mt-2 flex flex-col'>
                     <div className='w-full'>
