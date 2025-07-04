@@ -1,25 +1,28 @@
  Employee Management System
- 
-🚀A web-based Employee Management System built with React, TailwindCSS, Context API, and Local Storage.
+🚀 A web-based Employee Management System built with React, TailwindCSS, Context API, and Local Storage.
+
 ✅ Manage employees and tasks efficiently with an intuitive admin and employee dashboard.
 
 
 📌 Features
 
 🧑‍💼 Admin Dashboard
- Add and manage employees
- Create tasks and assign to employees
- Track task progress (New, Active, Completed, Failed)
+
+    Add and manage employees
+    Create tasks and assign to employees
+    Track task progress (New, Active, Completed, Failed)
 
 👨‍💻 Employee Dashboard
- View assigned tasks
- Update task status
+
+    View assigned tasks
+    Update task status
 
 🌙 Tech Stack
- React.js
- Context API
- TailwindCSS
- Local Storage (to persist data)
+
+    React.js
+    Context API
+    TailwindCSS
+    Local Storage (to persist data)
 
 🚀 Getting Started
 Prerequisites
@@ -27,9 +30,9 @@ Prerequisites
 ✅ npm >= 6.x (or Yarn)
 
 Installation
-bash
-Copy
-Edit
+    bash
+    Copy
+    Edit
 
 # Clone the repository
 git clone https://github.com/Mehulposh/Employee-Management-System.git
@@ -66,5 +69,4 @@ src/
 🧑‍💻 Contributing
 Contributions are welcome!
 Please fork the repository and open a pull request with your changes.
-Create a new branch to commit your code.
 You can also open an issue for suggestions and bug reports.
