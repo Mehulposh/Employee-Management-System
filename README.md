@@ -65,6 +65,7 @@ src/
 └── App.jsx
 
 
+![image](https://github.com/user-attachments/assets/e0b712d4-c9fd-45a7-bc69-a90f3b6e5bff)
 
 🧑‍💻 Contributing
 Contributions are welcome!
