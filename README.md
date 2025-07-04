@@ -1,4 +1,5 @@
  Employee Management System
+ 
 🚀 A web-based Employee Management System built with React, TailwindCSS, Context API, and Local Storage.
 
 ✅ Manage employees and tasks efficiently with an intuitive admin and employee dashboard.
@@ -26,7 +27,9 @@
 
 🚀 Getting Started
 Prerequisites
+
 ✅ Node.js >= 14.x
+
 ✅ npm >= 6.x (or Yarn)
 
 Installation
@@ -42,32 +45,27 @@ cd Employee-Management-System
 
 # Install dependencies
 npm install
+
 Running the App
+
 bash
+
 Copy
+
 Edit
 
 # Start the development server
 npm start
 Open http://localhost:3000 in your browser.
 
-📁 Folder Structure
-css
-Copy
-Edit
-src/
-├── components/
-│   ├── Auth/
-│   ├── Dashboard/
-│   ├── HelperComponents/
-├── context/
-├── utils/
-└── App.jsx
+
 
 
 ![image](https://github.com/user-attachments/assets/e0b712d4-c9fd-45a7-bc69-a90f3b6e5bff)
 
 🧑‍💻 Contributing
 Contributions are welcome!
+
 Please fork the repository and open a pull request with your changes.
+
 You can also open an issue for suggestions and bug reports.
