@@ -66,4 +66,5 @@ src/
 🧑‍💻 Contributing
 Contributions are welcome!
 Please fork the repository and open a pull request with your changes.
+Create a new branch to commit your code.
 You can also open an issue for suggestions and bug reports.
