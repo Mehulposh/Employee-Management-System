@@ -1,9 +1,26 @@
-import React from 'react'
-import { useContext } from 'react'
-import { AuthContext } from '../../context/AuthProvider'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+// import { useContext } from 'react'
+// import { AuthContext } from '../../context/AuthProvider'
 
 const AllTasks = () => {
-    const {userData} = useContext(AuthContext);
+    // const {userData} = useContext(AuthContext);
+    const [userData,setUserData] = useState([]);
+    
+    useEffect(() => {
+      const getData = async () => {
+        try {
+          const response = await axios.get('http://127.0.0.1:8082/api/v1/user/all-users');
+          console.log(response.data);
+          setUserData(response.data);
+        } catch (error) {
+          console.log(error);
+          
+        }
+      }
+
+      getData()
+    },[])
   return (
     <div  className='bg-[#1C1C1C] rounded p-5 mt-5 h-50 '>
         <div className='bg-red-400 mb-2 py-2 px-4 rounded flex justify-between items-center'>
@@ -15,7 +32,7 @@ const AllTasks = () => {
         </div>
        <div id='alltasks' className='overflow-auto h-[80%]'>
             {userData.map(data => (
-                <div className='border border-red-400 mb-2 py-2 px-4 rounded flex justify-between items-center' key={data.id}>
+                <div className='border border-red-400 mb-2 py-2 px-4 rounded flex justify-between items-center' key={data._id}>
                     <h2 className='w-1/5 text-white text-xl '>{data.name}</h2>
                     <h3 className='w-1/5 text-blue-500 text-xl font-bold'>{data.taskCount.newTask}</h3>
                     <h5 className='w-1/5 text-purple-400 text-xl font-bold'>{data.taskCount.active}</h5>
