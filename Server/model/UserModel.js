@@ -1,18 +1,46 @@
 const {Schema, default: mongoose} = require("mongoose")
 
+// Task subdocument schema
+const taskSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: [true, "Task title is required"],
+      trim: true,
+    },
+    date: {
+      type: Date,
+      required: [true, "Task date is required"],
+    },
+    priority: {
+      type: String,
+      enum: ["low", "medium", "high"],
+      default: "medium",
+    },
+    description: {
+      type: String,
+      required: [true, "Task description is required"],
+    },
+    category: {
+      type: String,
+      required: [true, "Task category is required"],
+    },
+    status: {
+      type: String,
+      enum: ["newTask", "active", "completed", "failed"],
+      default: "newTask",
+    },
+  },
+  { timestamps: true }
+);
+
+// User schema
 const userSchema = new Schema(
   {
-    id: {
-      type: Number,
-      required: true,
-      unique: true,
-    },
     name: {
       type: String,
       required: [true, "Name is required"],
       trim: true,
-      minlength: [2, "Name must be at least 2 characters"],
-      maxlength: [100, "Name must be less than 100 characters"],
     },
     email: {
       type: String,
@@ -20,13 +48,16 @@ const userSchema = new Schema(
       unique: true,
       lowercase: true,
       trim: true,
-      match: [/\S+@\S+\.\S+/, "Email is invalid"],
+      match: [/\S+@\S+\.\S+/, "Invalid email format"],
     },
     password: {
       type: String,
       required: [true, "Password is required"],
-      minlength: [3, "Password must be at least 3 characters"],
+      minlength: [6, "Password must be at least 6 characters"],
     },
+    tasks: [taskSchema], // Embedded tasks
+
+    // Task summary counts
     taskCount: {
       active: { type: Number, default: 0 },
       newTask: { type: Number, default: 0 },
@@ -34,9 +65,7 @@ const userSchema = new Schema(
       failed: { type: Number, default: 0 },
     },
   },
-  {
-    timestamps: true, // adds createdAt and updatedAt automatically
-  }
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("users", userSchema);
