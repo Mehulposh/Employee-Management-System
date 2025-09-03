@@ -43,7 +43,7 @@ function App() {
         const data = adminData.find((i) => email === i.email && password === i.password);
         setUser('admin');
         localStorage.setItem('UserDetails',JSON.stringify({role: 'admin',id: data.id}));
-      
+        
     }else if(employeesData){
       const data = employeesData.find((i) => email === i.email && password === i.password)
       if(data){
@@ -62,7 +62,7 @@ function App() {
   const handleLogout = () => {
     setUser(null);
     setUserData(null);
-    localStorage.removeItem('UserDetails');
+    localStorage.removeItem('UserDetails'); 
   }
   
   
