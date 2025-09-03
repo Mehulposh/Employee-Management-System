@@ -1,19 +1,18 @@
 const {Schema, default: mongoose} = require("mongoose")
 
-
-const userSchema = new Schema({
+const userSchema = new Schema(
+  {
+    id: {
+      type: Number,
+      required: true,
+      unique: true,
+    },
     name: {
       type: String,
       required: [true, "Name is required"],
       trim: true,
       minlength: [2, "Name must be at least 2 characters"],
       maxlength: [100, "Name must be less than 100 characters"],
-    },
-    age: {
-      type: Number,
-      required: [true, "Age is required"],
-      min: [18, "Age must be a more than or equal to 18"],
-      max: [150, "Age must be less than or equal to 150"],
     },
     email: {
       type: String,
@@ -26,12 +25,18 @@ const userSchema = new Schema({
     password: {
       type: String,
       required: [true, "Password is required"],
-      minlength: [6, "Password must be at least 6 characters"],
+      minlength: [3, "Password must be at least 3 characters"],
     },
-    isActive: {
-      type: Boolean,
-      default: true,
-    }
-});
+    taskCount: {
+      active: { type: Number, default: 0 },
+      newTask: { type: Number, default: 0 },
+      completed: { type: Number, default: 0 },
+      failed: { type: Number, default: 0 },
+    },
+  },
+  {
+    timestamps: true, // adds createdAt and updatedAt automatically
+  }
+);
 
 module.exports = mongoose.model("users", userSchema);
