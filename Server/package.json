@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "EMS Backend",
+  "homepage": "https://github.com/Mehulposh/Employee-Management-System#readme",
+  "bugs": {
+    "url": "https://github.com/Mehulposh/Employee-Management-System/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mehulposh/Employee-Management-System.git"
+  },
+  "license": "ISC",
+  "author": "Mehul Poshattiwar",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  }
+}
