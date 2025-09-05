@@ -48,5 +48,15 @@ const create_User = async (name,email,password) => {
                 return error
             }
 
+}
+
+
+const user_login = async (email) => {
+    try {
+        const response = await UserModel.findOne({email});
+        return response
+    } catch (error) {
+        return error
     }
-module.exports = {getUsers,get_User_By_Id,get_User_By_Name,create_User}
+}
+module.exports = {getUsers,get_User_By_Id,get_User_By_Name,create_User,user_login}

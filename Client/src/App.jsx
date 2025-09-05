@@ -3,14 +3,16 @@ import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup'
 import EmployeeDashboard from './components/Dashboard/EmployeeDashboard';
 import AdminDashboard from './components/Dashboard/AdminDashboard';
-import {Routes,Route} from 'react-router-dom'
+import {Routes,Route,useNavigate} from 'react-router-dom'
 import { setLocalStorage } from './utils/localStoreage';
 import { AuthContext } from './context/AuthProvider';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import axios from 'axios';
 
 // import './App.css'
 
 function App() {
-
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [userData, setUserData] = useState(null);
   const {userData: employeesData, admin: adminData} = useContext(AuthContext);
@@ -40,28 +42,29 @@ function App() {
   }, [])
   
   
-  const handleLogin = (email,password) => {
-    if(adminData?.find((i) => email === i.email && password === i.password)){
-        const data = adminData.find((i) => email === i.email && password === i.password);
-        setUser('admin');
-        localStorage.setItem('UserDetails',JSON.stringify({role: 'admin',id: data.id}));
-        
-    }else if(employeesData){
-      const data = employeesData.find((i) => email === i.email && password === i.password)
-      if(data){
-        setUser('employee');
-        setUserData(data);
-        console.log(data);
-       
-        localStorage.setItem('UserDetails',JSON.stringify({role: 'employee', id: data.id}));
-      }
+  
 
-    }else{
-     alert('Invalid');
+  const handleLogin = async (email,password) => {
+    try {
+      const response = await axios.post('http://127.0.0.1:8082/api/v1/user/user-login',{
+        email: email,
+        password: password
+      });
+
+      console.log(response);
+      if(response.data.password === password){
+        setUser('employee')
+        setUserData(response.data)
+        navigate("/employee");
+      }
+    } catch (error) {
+      console.log(error);
+      
     }
   }
 
   const handleLogout = () => {
+    navigate('/')
     setUser(null);
     setUserData(null);
     localStorage.removeItem('UserDetails'); 
@@ -71,10 +74,18 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/employee" element={<EmployeeDashboard />} />
-        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/employee" element={
+          <ProtectedRoute user={user} role='employee'>
+            <EmployeeDashboard handleLogout={handleLogout} data={userData}/>
+          </ProtectedRoute>
+        } />
+        <Route path="/admin" element={
+          <ProtectedRoute user={user} role='admin'>
+            <AdminDashboard handleLogout={handleLogout}/>
+          </ProtectedRoute>
+        } />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login handleLogin={handleLogin}/>} />
        
       </Routes>
 
