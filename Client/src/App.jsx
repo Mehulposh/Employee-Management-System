@@ -1,7 +1,9 @@
 import { useState,useEffect, useContext } from 'react'
 import Login from './components/Auth/Login';
+import Signup from './components/Auth/Signup'
 import EmployeeDashboard from './components/Dashboard/EmployeeDashboard';
 import AdminDashboard from './components/Dashboard/AdminDashboard';
+import {Routes,Route} from 'react-router-dom'
 import { setLocalStorage } from './utils/localStoreage';
 import { AuthContext } from './context/AuthProvider';
 
@@ -68,13 +70,21 @@ function App() {
   
   return (
     <>
-      {!user ? (
+      <Routes>
+        <Route path="/employee" element={<EmployeeDashboard />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/" element={<Login />} />
+       
+      </Routes>
+
+      {/* {!user ? (
         <Login handleLogin={handleLogin}/>
       ) : user === 'admin' ? (
         <AdminDashboard handleLogout={handleLogout} data={userData}/>
       ) : (
         <EmployeeDashboard data={userData} handleLogout={handleLogout}/>
-      )}
+      )} */}
     </>
   )
 }

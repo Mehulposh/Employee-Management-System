@@ -1,14 +1,21 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router';
-const Login = ({handleLogin}) => {
+const Signup = () => {
     const navigate = useNavigate();
+    const [name, setName ] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        try {
+            const response = await axios.post('')
+        } catch (error) {
+            console.log(error);
+            
+        }
         
-        handleLogin(email,password);
         setEmail('');
         setPassword('');
     }
@@ -19,8 +26,15 @@ const Login = ({handleLogin}) => {
             <h3 className='text-xl text-gray-500 mb-5'>Login Page</h3>
             <form 
                 onSubmit={(e) => handleSubmit(e)} 
-                className='flex flex-col items-center justify-center'
+                className='flex flex-col items-center justify-center '
             >
+                <input 
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    className='text-gray-400 border-2 border-emerald-600 rounded-full outline-none bg-transparent placeholder:text-gray-400 py-4 px-5 text-xl mb-3'
+                    type='email' placeholder='Enter your name' 
+                />
                 <input 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -36,24 +50,21 @@ const Login = ({handleLogin}) => {
                     type='password' placeholder='Enter password' 
                 />
                 <button 
-                type='submit'
-                    className='border-none rounded-full mt-3 outline-none bg-emerald-600  py-3  px-8 w-full text-lg'
+                    className='border-none rounded-full mt-3 outline-none bg-emerald-600  py-3  px-8 w-full text-lg      '
                 >
-                    Login
+                    Signup
                 </button>
-                
             </form>
-            
         </div>
-        <p className='text-gray-300 mt-2'> Signup to create new account</p>
+        <p className='text-gray-300 mt-2'>Login , if already registered</p>
         <button 
-            className='border-none rounded-full mt-2 outline-none bg-emerald-600  py-3  px-8 w-70 text-lg '
-            onClick={()=> navigate('/signup')}
+            className='border-none rounded-full mt-2 outline-none bg-emerald-600  py-3  px-8 w-70 text-lg'
+            onClick={()=> navigate('/')}
         >
-            Sign up
+            Login
         </button>
     </div>
   )
 }
 
-export default Login
+export default Signup
