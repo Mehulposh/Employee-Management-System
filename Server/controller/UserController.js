@@ -1,4 +1,4 @@
-const {getUsers,get_User_By_Id} = require('../service/UserService')
+const {getUsers,get_User_By_Id,create_User} = require('../service/UserService')
 
 async function getAllUsers(req,res){
     try {
@@ -25,4 +25,23 @@ async function getUserById(req,res){
         res.status(400).json({message: 'Error fetching user data'})
     }
 }
-module.exports = {getAllUsers,getUserById}
+
+
+
+async function createUser(req,res) {
+    const body = req.body;
+    console.log('body',body);
+    
+    const {name,email,password} = body;
+
+    try {
+        const response = await create_User(name,email,password);
+        console.log(response);
+        
+        res.status(201).json(response)
+    } catch (error) {
+        res.status(400).json({message: 'Error Creating User'})
+    }
+    
+}
+module.exports = {getAllUsers,getUserById,createUser}

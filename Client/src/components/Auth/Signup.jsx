@@ -8,9 +8,20 @@ const Signup = () => {
     const [password, setPassword] = useState('');
 
     const handleSubmit = async (e) => {
+        
         e.preventDefault();
         try {
-            const response = await axios.post('')
+            const response = await axios.post('http://127.0.0.1:8082/api/v1/user/create-user',{
+                name: name,
+            email: email,
+            password: password
+            })
+            
+            if(response.status === 201){
+                alert('Account Created Successfully');
+                navigate('/');
+            }
+            
         } catch (error) {
             console.log(error);
             
@@ -18,6 +29,7 @@ const Signup = () => {
         
         setEmail('');
         setPassword('');
+        setName('');
     }
 
   return (
@@ -33,7 +45,7 @@ const Signup = () => {
                     onChange={(e) => setName(e.target.value)}
                     required
                     className='text-gray-400 border-2 border-emerald-600 rounded-full outline-none bg-transparent placeholder:text-gray-400 py-4 px-5 text-xl mb-3'
-                    type='email' placeholder='Enter your name' 
+                    type='text' placeholder='Enter your name' 
                 />
                 <input 
                     value={email}

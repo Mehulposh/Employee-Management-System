@@ -35,16 +35,13 @@ const get_User_By_Name = async (name) => {
     }
 }
 
-const createUser = async (
-    name,
-    email,
-    password
-) => {
+const create_User = async (name,email,password) => {
         // Logic to create a user
         const UserObject = UserModel({name,email,password});
         
             try { 
                 const response = await UserObject.save();
+                console.log(response);
                 
                 return response
             } catch (error) {
@@ -52,4 +49,4 @@ const createUser = async (
             }
 
     }
-module.exports = {getUsers,get_User_By_Id,get_User_By_Name,createUser}
+module.exports = {getUsers,get_User_By_Id,get_User_By_Name,create_User}
